@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+import "ChassisBody.proto";
+import "Axle_DoubelWishBone.proto";
+
+package tx_car;
+
+// vhicle with suspension DoubleWishBone both in front and rear
+message MBD_Vehicle_DW_DW {
+  MBD_Axle_DoubleWishBone front = 1;
+  MBD_Axle_DoubleWishBone rear = 2;
+  MBD_ChassisBody chassisBody = 3;
+}

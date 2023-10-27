@@ -1,0 +1,1380 @@
+{
+ "front": {
+  "suspLeft": {
+   "spindle": {
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.15,
+     "dataSource": "UserInput"
+    },
+    "width": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.06,
+     "dataSource": "UserInput"
+    },
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 14.705,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.04117,
+     "y": 0.07352,
+     "z": 0.04117,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.91,
+     "z": -0.026,
+     "dataSource": "UserInput"
+    }
+   },
+   "upright": {
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.025,
+     "dataSource": "UserInput"
+    },
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 19.45,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.1656,
+     "y": 0.1934,
+     "z": 0.04367,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.751,
+     "z": -0.026,
+     "dataSource": "UserInput"
+    }
+   },
+   "lowerControlArm": {
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 23.965,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.547,
+     "z": -0.0089999992549419372,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.4,
+     "y": 0.4,
+     "z": 0.8938,
+     "dataSource": "UserInput"
+    },
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.03,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisFront": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.223,
+     "y": 0.307,
+     "z": 0.10000000149011612,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisBack": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": -0.223,
+     "y": 0.307,
+     "z": 0.10000000149011612,
+     "dataSource": "UserInput"
+    },
+    "offsetInUpRight": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.787,
+     "z": -0.118,
+     "dataSource": "UserInput"
+    }
+   },
+   "upperControlArm": {
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 5.813,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.589,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.03,
+     "y": 0.03,
+     "z": 0.06276,
+     "dataSource": "UserInput"
+    },
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.03,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisFront": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.168,
+     "y": 0.446,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisBack": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": -0.168,
+     "y": 0.446,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    },
+    "offsetInUpRight": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.716,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    }
+   },
+   "spring": {
+    "offsetInChassis": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.45,
+     "z": 0.52800000309944151,
+     "dataSource": "UserInput"
+    },
+    "offsetInAxle": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.65,
+     "z": -0.047,
+     "dataSource": "UserInput"
+    },
+    "freeLength": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.3,
+     "dataSource": "UserInput"
+    },
+    "stiffness": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 4500000,
+     "dataSource": "UserInput"
+    }
+   },
+   "damper": {
+    "offsetInChassis": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.104,
+     "y": 0.51,
+     "z": 0.197,
+     "dataSource": "UserInput"
+    },
+    "offsetInAxle": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.097,
+     "y": 0.543,
+     "z": -0.047,
+     "dataSource": "UserInput"
+    },
+    "damping": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 19015,
+     "dataSource": "UserInput"
+    }
+   },
+   "isLeft": false
+  },
+  "suspRight": {
+   "spindle": {
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.15,
+     "dataSource": "UserInput"
+    },
+    "width": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.06,
+     "dataSource": "UserInput"
+    },
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 14.705,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.04117,
+     "y": 0.07352,
+     "z": 0.04117,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.91,
+     "z": -0.026,
+     "dataSource": "UserInput"
+    }
+   },
+   "upright": {
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.025,
+     "dataSource": "UserInput"
+    },
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 19.45,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.1656,
+     "y": 0.1934,
+     "z": 0.04367,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.751,
+     "z": -0.026,
+     "dataSource": "UserInput"
+    }
+   },
+   "lowerControlArm": {
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 23.965,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.547,
+     "z": -0.0089999992549419372,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.4,
+     "y": 0.4,
+     "z": 0.8938,
+     "dataSource": "UserInput"
+    },
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.03,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisFront": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.223,
+     "y": -0.307,
+     "z": 0.10000000149011612,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisBack": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": -0.223,
+     "y": -0.307,
+     "z": 0.10000000149011612,
+     "dataSource": "UserInput"
+    },
+    "offsetInUpRight": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.787,
+     "z": -0.118,
+     "dataSource": "UserInput"
+    }
+   },
+   "upperControlArm": {
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 5.813,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.589,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.03,
+     "y": 0.03,
+     "z": 0.06276,
+     "dataSource": "UserInput"
+    },
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.03,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisFront": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.168,
+     "y": -0.446,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisBack": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": -0.168,
+     "y": -0.446,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    },
+    "offsetInUpRight": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.716,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    }
+   },
+   "spring": {
+    "offsetInChassis": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.45,
+     "z": 0.52800000309944151,
+     "dataSource": "UserInput"
+    },
+    "offsetInAxle": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.65,
+     "z": -0.047,
+     "dataSource": "UserInput"
+    },
+    "freeLength": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.3,
+     "dataSource": "UserInput"
+    },
+    "stiffness": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 4500000,
+     "dataSource": "UserInput"
+    }
+   },
+   "damper": {
+    "offsetInChassis": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.104,
+     "y": -0.51,
+     "z": 0.197,
+     "dataSource": "UserInput"
+    },
+    "offsetInAxle": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.097,
+     "y": -0.543,
+     "z": -0.047,
+     "dataSource": "UserInput"
+    },
+    "damping": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 19015,
+     "dataSource": "UserInput"
+    }
+   },
+   "isLeft": false
+  },
+  "axleInertia": {
+   "dispName": "",
+   "comment": "",
+   "unit": "",
+   "val": 0.4,
+   "dataSource": "UserInput"
+  },
+  "offsetInChassisBody": {
+   "dispName": "",
+   "comment": "",
+   "unit": "",
+   "x": 1.688965,
+   "y": 0,
+   "z": 0,
+   "dataSource": "UserInput"
+  },
+  "wheelLeft": [
+   {
+    "diameter": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.536,
+     "dataSource": "UserInput"
+    },
+    "width": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.22,
+     "dataSource": "UserInput"
+    },
+    "aspectRatio": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 45,
+     "dataSource": "UserInput"
+    },
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 18.8,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.4634,
+     "y": 0.6243,
+     "z": 0.4634,
+     "dataSource": "UserInput"
+    },
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.268,
+     "dataSource": "UserInput"
+    },
+    "isLeft": true,
+    "steerable": true,
+    "offsetInAxle": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.036,
+     "y": 1.08,
+     "z": -0.026,
+     "dataSource": "UserInput"
+    }
+   }
+  ],
+  "wheelRight": [
+   {
+    "diameter": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.536,
+     "dataSource": "UserInput"
+    },
+    "width": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.22,
+     "dataSource": "UserInput"
+    },
+    "aspectRatio": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 45,
+     "dataSource": "UserInput"
+    },
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 18.8,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.4634,
+     "y": 0.6243,
+     "z": 0.4634,
+     "dataSource": "UserInput"
+    },
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.268,
+     "dataSource": "UserInput"
+    },
+    "isLeft": false,
+    "steerable": true,
+    "offsetInAxle": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.036,
+     "y": -1.08,
+     "z": -0.026,
+     "dataSource": "UserInput"
+    }
+   }
+  ],
+  "steerable": true,
+  "toe": {
+   "dispName": "",
+   "comment": "",
+   "unit": "",
+   "val": 0.2,
+   "dataSource": "UserInput"
+  },
+  "camber": {
+   "dispName": "",
+   "comment": "",
+   "unit": "",
+   "val": -0.14,
+   "dataSource": "UserInput"
+  }
+ },
+ "rear": {
+  "suspLeft": {
+   "spindle": {
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.15,
+     "dataSource": "UserInput"
+    },
+    "width": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.06,
+     "dataSource": "UserInput"
+    },
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 15.91,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.04117,
+     "y": 0.07352,
+     "z": 0.04117,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.91,
+     "z": -0.026,
+     "dataSource": "UserInput"
+    }
+   },
+   "upright": {
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.025,
+     "dataSource": "UserInput"
+    },
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 27.27,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.1656,
+     "y": 0.1934,
+     "z": 0.04367,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.751,
+     "z": -0.026,
+     "dataSource": "UserInput"
+    }
+   },
+   "lowerControlArm": {
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 16.36,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.547,
+     "z": -0.0089999992549419372,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.4,
+     "y": 0.4,
+     "z": 0.8938,
+     "dataSource": "UserInput"
+    },
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.03,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisFront": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.223,
+     "y": 0.307,
+     "z": 0.10000000149011612,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisBack": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": -0.223,
+     "y": 0.307,
+     "z": 0.10000000149011612,
+     "dataSource": "UserInput"
+    },
+    "offsetInUpRight": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.787,
+     "z": -0.118,
+     "dataSource": "UserInput"
+    }
+   },
+   "upperControlArm": {
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 5.45,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.589,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.03,
+     "y": 0.03,
+     "z": 0.06276,
+     "dataSource": "UserInput"
+    },
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.03,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisFront": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.168,
+     "y": 0.462,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisBack": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": -0.168,
+     "y": 0.462,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    },
+    "offsetInUpRight": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.716,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    }
+   },
+   "spring": {
+    "offsetInChassis": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.45,
+     "z": 0.52800000309944151,
+     "dataSource": "UserInput"
+    },
+    "offsetInAxle": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": 0.65,
+     "z": -0.047,
+     "dataSource": "UserInput"
+    },
+    "freeLength": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.3,
+     "dataSource": "UserInput"
+    },
+    "stiffness": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 5000000,
+     "dataSource": "UserInput"
+    }
+   },
+   "damper": {
+    "offsetInChassis": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": -0.104,
+     "y": 0.502,
+     "z": 0.256,
+     "dataSource": "UserInput"
+    },
+    "offsetInAxle": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": -0.097,
+     "y": 0.543,
+     "z": -0.047,
+     "dataSource": "UserInput"
+    },
+    "damping": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 19015,
+     "dataSource": "UserInput"
+    }
+   },
+   "isLeft": false
+  },
+  "suspRight": {
+   "spindle": {
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.15,
+     "dataSource": "UserInput"
+    },
+    "width": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.06,
+     "dataSource": "UserInput"
+    },
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 15.91,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.04117,
+     "y": 0.07352,
+     "z": 0.04117,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.91,
+     "z": -0.026,
+     "dataSource": "UserInput"
+    }
+   },
+   "upright": {
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.025,
+     "dataSource": "UserInput"
+    },
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 27.27,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.1656,
+     "y": 0.1934,
+     "z": 0.04367,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.751,
+     "z": -0.026,
+     "dataSource": "UserInput"
+    }
+   },
+   "lowerControlArm": {
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 16.36,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.547,
+     "z": -0.0089999992549419372,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.4,
+     "y": 0.4,
+     "z": 0.8938,
+     "dataSource": "UserInput"
+    },
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.03,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisFront": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.223,
+     "y": -0.307,
+     "z": 0.10000000149011612,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisBack": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": -0.223,
+     "y": -0.307,
+     "z": 0.10000000149011612,
+     "dataSource": "UserInput"
+    },
+    "offsetInUpRight": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.787,
+     "z": -0.118,
+     "dataSource": "UserInput"
+    }
+   },
+   "upperControlArm": {
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 5.45,
+     "dataSource": "UserInput"
+    },
+    "offset": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.589,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.03,
+     "y": 0.03,
+     "z": 0.06276,
+     "dataSource": "UserInput"
+    },
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.03,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisFront": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.168,
+     "y": -0.462,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    },
+    "offsetInChassisBack": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": -0.168,
+     "y": -0.462,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    },
+    "offsetInUpRight": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.716,
+     "z": 0.42800000309944153,
+     "dataSource": "UserInput"
+    }
+   },
+   "spring": {
+    "offsetInChassis": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.45,
+     "z": 0.52800000309944151,
+     "dataSource": "UserInput"
+    },
+    "offsetInAxle": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0,
+     "y": -0.65,
+     "z": -0.047,
+     "dataSource": "UserInput"
+    },
+    "freeLength": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.3,
+     "dataSource": "UserInput"
+    },
+    "stiffness": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 5000000,
+     "dataSource": "UserInput"
+    }
+   },
+   "damper": {
+    "offsetInChassis": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": -0.104,
+     "y": -0.502,
+     "z": 0.256,
+     "dataSource": "UserInput"
+    },
+    "offsetInAxle": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": -0.097,
+     "y": -0.543,
+     "z": -0.047,
+     "dataSource": "UserInput"
+    },
+    "damping": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 19015,
+     "dataSource": "UserInput"
+    }
+   },
+   "isLeft": false
+  },
+  "axleInertia": {
+   "dispName": "",
+   "comment": "",
+   "unit": "",
+   "val": 0.4,
+   "dataSource": "UserInput"
+  },
+  "offsetInChassisBody": {
+   "dispName": "",
+   "comment": "",
+   "unit": "",
+   "x": -1.688965,
+   "y": 0,
+   "z": 0,
+   "dataSource": "UserInput"
+  },
+  "wheelLeft": [
+   {
+    "diameter": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.536,
+     "dataSource": "UserInput"
+    },
+    "width": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.22,
+     "dataSource": "UserInput"
+    },
+    "aspectRatio": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 45,
+     "dataSource": "UserInput"
+    },
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 18.8,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.4634,
+     "y": 0.6243,
+     "z": 0.4634,
+     "dataSource": "UserInput"
+    },
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.268,
+     "dataSource": "UserInput"
+    },
+    "isLeft": true,
+    "steerable": false,
+    "offsetInAxle": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.036,
+     "y": 1.08,
+     "z": -0.026,
+     "dataSource": "UserInput"
+    }
+   }
+  ],
+  "wheelRight": [
+   {
+    "diameter": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.536,
+     "dataSource": "UserInput"
+    },
+    "width": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.22,
+     "dataSource": "UserInput"
+    },
+    "aspectRatio": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 45,
+     "dataSource": "UserInput"
+    },
+    "mass": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 18.8,
+     "dataSource": "UserInput"
+    },
+    "inertia": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.4634,
+     "y": 0.6243,
+     "z": 0.4634,
+     "dataSource": "UserInput"
+    },
+    "radius": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "val": 0.268,
+     "dataSource": "UserInput"
+    },
+    "isLeft": false,
+    "steerable": false,
+    "offsetInAxle": {
+     "dispName": "",
+     "comment": "",
+     "unit": "",
+     "x": 0.036,
+     "y": -1.08,
+     "z": -0.026,
+     "dataSource": "UserInput"
+    }
+   }
+  ],
+  "steerable": false
+ },
+ "chassisBody": {
+  "mass": {
+   "dispName": "",
+   "comment": "",
+   "unit": "",
+   "val": 2086.58,
+   "dataSource": "UserInput"
+  },
+  "offsetOfCG": {
+   "dispName": "",
+   "comment": "",
+   "unit": "",
+   "x": 0.056,
+   "y": 0,
+   "z": 0.3,
+   "dataSource": "UserInput"
+  },
+  "orientation": {
+   "dispName": "",
+   "comment": "",
+   "unit": "",
+   "x": 0,
+   "y": 0,
+   "z": 0,
+   "w": 1,
+   "dataSource": "UserInput"
+  },
+  "inertia": {
+   "dispName": "",
+   "comment": "",
+   "unit": "",
+   "x": 1078.52,
+   "y": 2995.66,
+   "z": 3570.2,
+   "dataSource": "UserInput"
+  },
+  "boundingBox": {
+   "dispName": "",
+   "comment": "",
+   "unit": "",
+   "x": 1.4,
+   "y": 0.3,
+   "z": 0.2,
+   "dataSource": "UserInput"
+  }
+ }
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+import "car_basic.proto";
+package tx_car;
+
+message MBD_Wheel {
+  RealScalar diameter = 1;    // diameter, unit m
+  RealScalar width = 2;       // width, unit m
+  RealScalar aspectRatio = 3; // aspect ratio, unit %
+  RealScalar mass = 4;        // mass, unit kg
+  RealVec3 inertia = 5;       // inertia of wheel
+  RealScalar radius = 6;      // radius, unit m
+  bool isLeft = 7;
+  bool steerable = 8;
+  RealVec3 offsetInAxle = 9;       // offset in axle
+  StringVariable mf_tireFile = 64; // magic formular tire file path
+}

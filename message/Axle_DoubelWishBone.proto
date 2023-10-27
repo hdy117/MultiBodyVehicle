@@ -1,0 +1,18 @@
+syntax = "proto3";
+import "car_basic.proto";
+import "Wheel.proto";
+import "DoubleWishBone.proto";
+
+package tx_car;
+
+message MBD_Axle_DoubleWishBone {
+  MBD_DoubleWishBoneSusp suspLeft = 1;
+  MBD_DoubleWishBoneSusp suspRight = 2;
+  RealScalar axleInertia = 3;
+  RealVec3 offsetInChassisBody = 4;
+  repeated MBD_Wheel wheelLeft = 5;
+  repeated MBD_Wheel wheelRight = 6;
+  bool steerable = 7;
+  RealScalar toe = 8;    // unit deg
+  RealScalar camber = 9; // unit deg
+}

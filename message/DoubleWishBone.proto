@@ -1,0 +1,13 @@
+syntax = "proto3";
+import "Suspension.proto";
+package tx_car;
+
+message MBD_DoubleWishBoneSusp {
+  MBD_Spindle spindle = 1;
+  MBD_UpRight upright = 2;
+  SuspControlArm lowerControlArm = 3;
+  SuspControlArm upperControlArm = 4;
+  SuspSpring spring = 5;
+  SuspDamper damper = 6;
+  bool isLeft = 7;
+}

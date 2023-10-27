@@ -1,0 +1,49 @@
+syntax = "proto3";
+import "car_basic.proto";
+package tx_car;
+
+message MBD_Spindle {
+  RealScalar radius = 1; // radius, unit m
+  RealScalar width = 2;  // width, unit m
+  RealScalar mass = 3;   // mass, unit kg
+  RealVec3 inertia = 4;  // inertia of spindle
+  RealVec3 offset = 5;   // offset from axle center
+}
+
+message MBD_UpRight {
+  RealScalar radius = 1;         // radius, unit m
+  RealScalar mass = 3;           // mass, unit kg
+  RealVec3 inertia = 4;          // inertia of upright
+  RealVec3 inertiaOfProduct = 5; // product inertia of upright
+  RealVec3 offset = 6;           // offset from axle center
+}
+
+message SuspControlArm {
+  RealScalar mass = 1;               // mass, unit kg
+  RealVec3 offset = 2;               // offset from axle center
+  RealVec3 inertia = 3;              // inertia of control arm
+  RealVec3 inertiaOfProduct = 4;     // product inertia of control arm
+  RealScalar radius = 5;             // radius, unit m
+  RealVec3 offsetInChassisFront = 6; // front control arm connect point
+                                     // in chassis, front of two connect point
+  RealVec3 offsetInChassisBack = 7;  // back control arm connect point
+                                     // in chassis, back of two connect point
+  RealVec3 offsetInUpRight = 8;      // control arm connect point in upright
+}
+
+message SuspSpring {
+  RealVec3 offsetInChassis = 1; // spring connect point in chassis
+  RealVec3 offsetInAxle = 2;  // spring connect point in axle, connected to LCA
+  RealScalar freeLength = 3;  // free length, unit m
+  RealScalar stiffness = 4;   // stiffness, unit N/m
+  Real1DMap stiffnessMap = 5; // stiffness map
+  RealScalar minLength = 6;
+  RealScalar maxLength = 7;
+}
+
+message SuspDamper {
+  RealVec3 offsetInChassis = 1; // damper connect point in chassis
+  RealVec3 offsetInAxle = 2; // damper connect point in axle, connected to LCA
+  RealScalar damping = 3;    // damping, unit N/(m/s)
+  Real1DMap dampingMap = 4;  // damping map
+}

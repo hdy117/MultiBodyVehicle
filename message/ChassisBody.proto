@@ -1,0 +1,12 @@
+syntax = "proto3";
+import "car_basic.proto";
+package tx_car;
+
+message MBD_ChassisBody {
+  RealScalar mass = 1;           // mass, unit kg
+  RealVec3 offsetOfCG = 2;       // offset of CG
+  RealVec4 orientation = 3;      // orientation of CG
+  RealVec3 inertia = 4;          // inertia of chassis body
+  RealVec3 inertiaOfProduct = 5; // product inertia of chassis body
+  RealVec3 boundingBox = 6;      // bounding box, half of length, width, height
+}
