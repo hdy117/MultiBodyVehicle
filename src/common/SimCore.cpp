@@ -27,6 +27,7 @@ bool loadFromFile(std::string &content, const std::string &file_path) {
   if (in.is_open()) {
     content = std::string((std::istreambuf_iterator<char>(in)),
                           std::istreambuf_iterator<char>());
+    LOG_INFO << "json content:" << content << "\n";
     in.close();
     return true;
   }

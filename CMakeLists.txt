@@ -22,6 +22,8 @@ if(WIN32)
     add_definitions(-D_USE_MATH_DEFINES)
     add_definitions(-DNOMINMAX)
     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+    add_definitions(-DGLOG_NO_ABBREVIATED_SEVERITIES)
+
 
     # add_definitions(-DBT_NO_GLAD)
     message(STATUS "bullet3 find state is ${BULLET_FOUND}")
@@ -56,20 +58,15 @@ endif(WIN32)
 # gui srcs
 aux_source_directory(${root_dir}/src/gui gui_srcs)
 
-# build message
-add_definitions(-DSIM_BUILD_DLL)
-aux_source_directory(${root_dir}/message message_srcs)
-add_library(sim_msg STATIC ${message_srcs})
-
-# build dll
-add_definitions(-DSIM_BUILD_DLL)
+# common and sim msg lib
+aux_source_directory(${root_dir}/message sim_message_srcs)
 aux_source_directory(${root_dir}/src/common common_srcs)
-add_library(sim_common SHARED ${common_srcs})
-target_link_libraries(sim_common ${lib_glog} ${lib_sys} ${lib_protobuf} sim_msg)
+add_library(sim_common ${common_srcs} ${sim_message_srcs})
+target_link_libraries(sim_common ${lib_glog} ${lib_protobuf} ${lib_sys})
 
 # build hello world
 add_executable(hello_world ${root_dir}/src/HelloWorld.cpp)
-target_link_libraries(hello_world ${lib_bullet3} ${lib_sys} sim_common)
+target_link_libraries(hello_world ${lib_bullet3} ${lib_sys} sim_common ${lib_glog} ${lib_protobuf})
 target_compile_definitions(hello_world PRIVATE BT_USE_DOUBLE_PRECISION=1)
 
 # build gui hello world
@@ -78,7 +75,7 @@ add_executable(hello_world_gui ${gui_srcs}
     ${basic_example_srcs}
     ${BULLET_ROOT_DIR}/build3/bullet.rc
 )
-target_link_libraries(hello_world_gui ${lib_bullet3} ${lib_sys} ${lib_opengl} sim_common)
+target_link_libraries(hello_world_gui ${lib_bullet3} ${lib_sys} ${lib_opengl} sim_common ${lib_glog} ${lib_protobuf})
 target_compile_definitions(hello_world_gui PRIVATE BT_USE_DOUBLE_PRECISION=1)
 
 # build chains example
@@ -87,7 +84,7 @@ add_executable(chains ${gui_srcs}
     ${chains_example_srcs}
     ${BULLET_ROOT_DIR}/build3/bullet.rc
 )
-target_link_libraries(chains ${lib_bullet3} ${lib_sys} ${lib_opengl} sim_common)
+target_link_libraries(chains ${lib_bullet3} ${lib_sys} ${lib_opengl} sim_common ${lib_glog} ${lib_protobuf})
 target_compile_definitions(chains PRIVATE BT_USE_DOUBLE_PRECISION=1)
 
 # build chains example
@@ -96,11 +93,11 @@ add_executable(SimpleVehicle ${gui_srcs}
     ${vehicle_example_srcs}
     ${BULLET_ROOT_DIR}/build3/bullet.rc
 )
-target_link_libraries(SimpleVehicle ${lib_bullet3} ${lib_sys} ${lib_opengl} sim_common)
+target_link_libraries(SimpleVehicle ${lib_bullet3} ${lib_sys} ${lib_opengl} sim_common ${lib_glog} ${lib_protobuf})
 target_compile_definitions(SimpleVehicle PRIVATE BT_USE_DOUBLE_PRECISION=1)
 
 # build parameter writer
 aux_source_directory(${root_dir}/src/vehicle_param_writer param_writer_srcs)
 add_executable(param_writer ${param_writer_srcs})
-target_link_libraries(param_writer ${lib_bullet3} ${lib_sys} ${lib_opengl} sim_common sim_msg)
+target_link_libraries(param_writer sim_common ${lib_glog} ${lib_protobuf} ${lib_bullet3} ${lib_sys} ${lib_opengl})
 target_compile_definitions(param_writer PRIVATE BT_USE_DOUBLE_PRECISION=1)

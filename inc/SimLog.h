@@ -22,6 +22,6 @@ enum class LogLevel {
   DEBUG = 1,
 };
 
-SIM_API void setLogLevel(int &logLevel,
-                         const LogLevel &defaultLogLevel = LogLevel::DEBUG);
+void setLogLevel(int &logLevel,
+                 const LogLevel &defaultLogLevel = LogLevel::DEBUG);
 } // namespace tx_car

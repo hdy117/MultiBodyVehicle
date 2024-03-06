@@ -58,15 +58,21 @@ VehicleExample::createStaticPlane(const btVector3 &halfExtendSize,
 }
 
 // init vehicle data from file
-void VehicleExample::getVehicleParam(const std::string &jsonFilePath) {
+void VehicleExample::getVehicleParam(const std::string& jsonFilePath) {
   std::string jsonContent;
 
   if (!tx_car::loadFromFile(jsonContent, jsonFilePath)) {
+    LOG_ERROR << "fail to load json from file, " << jsonFilePath << "\n";
     throw std::runtime_error("fail to load json from file");
     return;
   }
 
-  tx_car::jsonToProto(jsonContent, m_vehParam);
+  try{
+    tx_car::jsonToProto(jsonContent, m_vehParam);
+  }
+  catch (const std::exception &e) {
+    LOG_ERROR << "tx_car::jsonToProto(jsonContent, m_vehParam) error, " << e.what() << "\n";
+  }
   LOG_0 << "m_vehParam:" << m_vehParam.DebugString() << "\n";
 }
 
@@ -105,7 +111,7 @@ void VehicleExample::createSimpleVehicle(
   btVector3 jointLocalInB(0, transInB.getOrigin().y(), 0);
   btVector3 jointBInGlobal = ballPosition + jointLocalInB;
   btVector3 dirAxle = roofPosition - jointBInGlobal;
-  btScalar rollOfSpringDamper = 0.0; 
+  btScalar rollOfSpringDamper = 0.0;
   rollOfSpringDamper = -std::atan2(dirAxle[1], dirAxle[2]);
   LOG_INFO << "rollOfSpringDamper[deg]:" << (rollOfSpringDamper)*RAD_2_DEG
            << "\n";
@@ -126,10 +132,11 @@ void VehicleExample::createSimpleVehicle(
 
   // disable other DoF
   for (auto i = 0; i < 6; ++i) {
-    //if (i != springAxis) {
+    // if (i != springAxis) {
     /*if (i <= 2) {
       spring->enableSpring(i, true);
-    } else*/ {
+    } else*/
+    {
       spring->enableSpring(i, false);
       spring->setStiffness(i, 1e9);
       spring->setDamping(i, 1e2);
@@ -209,23 +216,29 @@ void VehicleExample::hingeTest() {
   // add constraint
   btVector3 hingleAxis(1, 0, 0);
   auto hinge = new btHingeConstraint(
-      *m_roof.get(), *boxBody, btVector3(-rootHalfBBX[0]-0.5, 0, 0),
-                                     btVector3(boxHalfBBX[0] + 0.5, 0, 0),
-                                     hingleAxis, hingleAxis);
-  
+      *m_roof.get(), *boxBody, btVector3(-rootHalfBBX[0] - 0.5, 0, 0),
+      btVector3(boxHalfBBX[0] + 0.5, 0, 0), hingleAxis, hingleAxis);
+
   m_dynamicsWorld->addConstraint(hinge);
 }
 
 void VehicleExample::initPhysics() {
+  LOG_INFO << "VehicleExample::initPhysics begin.\n";
+
   // create world
   createEmptyDynamicsWorld();
 
+  LOG_INFO << "VehicleExample::initPhysics createEmptyDynamicsWorld.\n";
+
   // set gravity and up axis
   setGUI_UpAxis_Z();
+  LOG_INFO << "VehicleExample::initPhysics setGUI_UpAxis_Z.\n";
   setGravity();
+  LOG_INFO << "VehicleExample::initPhysics setGravity.\n";
 
   // prepare drawer
   m_guiHelper->createPhysicsDebugDrawer(m_dynamicsWorld);
+  LOG_INFO << "VehicleExample::initPhysics createPhysicsDebugDrawer.\n";
 
   if (m_dynamicsWorld->getDebugDrawer())
     m_dynamicsWorld->getDebugDrawer()->setDebugMode(
@@ -234,30 +247,41 @@ void VehicleExample::initPhysics() {
   // create ground
   m_ground = createGround();
   m_bodyMap["ground"] = m_ground;
+  LOG_INFO << "VehicleExample::initPhysics createGround.\n";
 
   // create rood
   m_roof = createStaticPlane(
       btVector3(m_roofBoxHalfLength, m_roofBoxHalfLength, m_roofBoxHalfHeight),
       btQuaternion(0, 0, 0, 1), btVector3(0, 0, m_roofInitZ));
   m_bodyMap["roof"] = m_roof;
+  LOG_INFO << "VehicleExample::initPhysics m_roof.\n";
 
   // load param
+  LOG_INFO << "m_const_vehParamPath:" << m_const_vehParamPath << "\n";
   getVehicleParam(m_const_vehParamPath);
+  LOG_INFO
+      << "VehicleExample::initPhysics getVehicleParam(m_const_vehParamPath).\n";
 
   // create double wishbone, double wishbone vehicle
   createVehicleDWDW(m_vehParam);
+  LOG_INFO << "VehicleExample::initPhysics createVehicleDWDW(m_vehParam).\n";
 
   // create simple vehicle example
   createSimpleVehicle(btVector3(), btQuaternion(0, 0, 0, 1));
+  LOG_INFO << "VehicleExample::initPhysics createSimpleVehicle.\n";
 
   // hinge test
   hingeTest();
+  LOG_INFO << "VehicleExample::initPhysics hingeTest.\n";
 
   // auto add graphics
   m_guiHelper->autogenerateGraphicsObjects(m_dynamicsWorld);
+  LOG_INFO << "VehicleExample::initPhysics autogenerateGraphicsObjects.\n";
 
   m_dynamicsWorld->getSolverInfo().m_numIterations = 150;
   m_dynamicsWorld->getSolverInfo().m_splitImpulse = true;
+
+  LOG_INFO << "VehicleExample::initPhysics end.\n";
 }
 
 void VehicleExample::renderScene() {
@@ -266,6 +290,8 @@ void VehicleExample::renderScene() {
 }
 
 void VehicleExample::stepSimulation(float deltaTime) {
+  LOG_INFO << "VehicleExample::stepSimulation(float deltaTime) begin.\n";
+
   /*if (m_stepCounter++ < 50)*/ {
     m_dynamicsWorld->stepSimulation(deltaTime);
     m_vehicleDWDW.stepSimulation(m_stepHelper);
@@ -296,9 +322,13 @@ void VehicleExample::stepSimulation(float deltaTime) {
   VehicleUtils::printbtVector3(
       chassisSimbody.getSimBody().m_body->getWorldTransform().getOrigin(),
       "chassis body origin");*/
+
+  LOG_INFO << "VehicleExample::stepSimulation(float deltaTime) end.\n";
 }
 
 void VehicleExample::exitPhysics() {
+  LOG_INFO << "VehicleExample::exitPhysics() begin.\n";
   // CommonMultiBodyBase::exitPhysics();
+  LOG_INFO << "VehicleExample::exitPhysics() end.\n";
 }
 } // namespace tx_car

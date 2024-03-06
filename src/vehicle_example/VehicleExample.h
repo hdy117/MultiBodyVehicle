@@ -54,7 +54,7 @@ private:
   // vehicle parameter
   tx_car::MBD_Vehicle_DW_DW m_vehParam;
   const std::string m_const_vehParamPath =
-      "E:\\work\\SimReposity\\MultiBodyVehicle\\param\\vehicle_dwdw.json";
+      "E:/work/git/MultiBodyVehicle/param/vehicle_dwdw.json";
 
   // vehicle model
   SimVehicle_DWDW m_vehicleDWDW;

@@ -1,5 +1,5 @@
-#include "SimCore.h"
 #include "proto_helper.h"
+#include "SimCore.h"
 
 namespace tx_car {
 bool protoToJson(const google::protobuf::Message &message,
@@ -105,6 +105,7 @@ void initMap1D(const tx_car::Real1DMap &map_1d, real_T bp[], real_T table[],
                uint32_t &max_index) {
   // map checker
   if (!tx_car::map1DFormatChecker(map_1d)) {
+    LOG_ERROR << "map_1d error, " << map_1d.disp_name() << "\n";
     std::abort();
   }
 

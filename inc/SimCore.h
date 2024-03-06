@@ -27,9 +27,8 @@
 
 namespace tx_car {
 /* dump string to file*/
-SIM_API bool dumpToFile(const std::string &content,
-                        const std::string &file_path);
+bool dumpToFile(const std::string &content, const std::string &file_path);
 
 /* load string from file path*/
-SIM_API bool loadFromFile(std::string &content, const std::string &file_path);
+bool loadFromFile(std::string &content, const std::string &file_path);
 } // namespace tx_car
