@@ -58,7 +58,7 @@ VehicleExample::createStaticPlane(const btVector3 &halfExtendSize,
 }
 
 // init vehicle data from file
-void VehicleExample::getVehicleParam(const std::string& jsonFilePath) {
+void VehicleExample::getVehicleParam(const std::string &jsonFilePath) {
   std::string jsonContent;
 
   if (!tx_car::loadFromFile(jsonContent, jsonFilePath)) {
@@ -67,11 +67,11 @@ void VehicleExample::getVehicleParam(const std::string& jsonFilePath) {
     return;
   }
 
-  try{
+  try {
     tx_car::jsonToProto(jsonContent, m_vehParam);
-  }
-  catch (const std::exception &e) {
-    LOG_ERROR << "tx_car::jsonToProto(jsonContent, m_vehParam) error, " << e.what() << "\n";
+  } catch (const std::exception &e) {
+    LOG_ERROR << "tx_car::jsonToProto(jsonContent, m_vehParam) error, "
+              << e.what() << "\n";
   }
   LOG_0 << "m_vehParam:" << m_vehParam.DebugString() << "\n";
 }
@@ -179,7 +179,7 @@ void VehicleExample::createVehicleDWDW(tx_car::MBD_Vehicle_DW_DW &dwdwParam) {
 
   // init helper
   {
-    m_initHelper.setInitPosition(btVector3(0, 0, 1.0));
+    m_initHelper.setInitPosition(btVector3(0, 0, 1));
     m_initHelper.setInitRotation(btQuaternion(btVector3(0, 0, 1), 0.25 * M_PI));
   }
 
@@ -278,7 +278,7 @@ void VehicleExample::initPhysics() {
   m_guiHelper->autogenerateGraphicsObjects(m_dynamicsWorld);
   LOG_INFO << "VehicleExample::initPhysics autogenerateGraphicsObjects.\n";
 
-  m_dynamicsWorld->getSolverInfo().m_numIterations = 150;
+  m_dynamicsWorld->getSolverInfo().m_numIterations = 300;
   m_dynamicsWorld->getSolverInfo().m_splitImpulse = true;
 
   LOG_INFO << "VehicleExample::initPhysics end.\n";
