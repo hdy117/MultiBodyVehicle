@@ -1,11 +1,11 @@
 #pragma once
 
-#include "SimVehicle_DWDW.h"
-
 #include <map>
 
-CommonExampleInterface *
-StandaloneExampleCreateFunc(CommonExampleOptions &options);
+#include "SimVehicle_DWDW.h"
+
+CommonExampleInterface *StandaloneExampleCreateFunc(
+    CommonExampleOptions &options);
 
 namespace tx_car {
 
@@ -13,18 +13,18 @@ class VehicleExample;
 using VehicleExamplePtr = std::shared_ptr<VehicleExample>;
 
 class VehicleExample : public CommonMultiBodyBase {
-public:
+ public:
   VehicleExample(GUIHelperInterface *helper);
   virtual ~VehicleExample();
 
-public:
+ public:
   virtual void initPhysics() override;
   virtual void stepSimulation(float deltaTime) override;
   virtual void exitPhysics() override;
   virtual void resetCamera() override;
   virtual void renderScene() override;
 
-public:
+ public:
   btRigidBodyPtr createGround();
   btRigidBodyPtr createStaticPlane(const btVector3 &halfExtendSize,
                                    const btQuaternion &rot,
@@ -43,18 +43,17 @@ public:
   // create vehicle model
   void createVehicleDWDW(tx_car::MBD_Vehicle_DW_DW &dwdwParam);
 
-public:
+ public:
   void setGUI_UpAxis_Z();
   void setGravity(const btVector3 &gravity = {0, 0, -9.81});
 
-private:
+ private:
   // ground info
   btScalar m_GroundBoxHalfLength, m_GroundHalfHeight;
 
   // vehicle parameter
   tx_car::MBD_Vehicle_DW_DW m_vehParam;
-  const std::string m_const_vehParamPath =
-      "E:/work/git/MultiBodyVehicle/param/vehicle_dwdw.json";
+  const std::string m_const_vehParamPath = "./param/vehicle_dwdw.json";
 
   // vehicle model
   SimVehicle_DWDW m_vehicleDWDW;
@@ -88,4 +87,4 @@ private:
   bool m_firstFrame = true;
   uint64_t m_stepCounter = 0;
 };
-} // namespace tx_car
+}  // namespace tx_car
