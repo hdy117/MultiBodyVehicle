@@ -1,8 +1,8 @@
+#include "SimDoubleWishbone.h"
+
 #include "SimAxle_DW.h"
 #include "SimChassisBody.h"
-#include "SimDoubleWishbone.h"
 #include "SimWheel.h"
-
 
 #define SIM_DEBUG_DRAW_CONSTRAINT
 // #define SIM_DEBUG_DRAW_LCA_HINGE_CONSTRAINT
@@ -12,7 +12,9 @@
 namespace tx_car {
 /*=======================*/
 SimDoubleWishBone::SimDoubleWishBone()
-    : m_side(Side::SIDE_LEFT), m_doubleWheel(false), m_axleNum(AxleNum::AXLE_0),
+    : m_side(Side::SIDE_LEFT),
+      m_doubleWheel(false),
+      m_axleNum(AxleNum::AXLE_0),
       m_parent(nullptr) {
   m_camberFliper = 1;
   m_toeFliper = 1;
@@ -129,7 +131,7 @@ void SimDoubleWishBone::constructLCA(btMultiBodyDynamicsWorld *world) {
     rollOfLowerControlArm = std::atan2(dirAxle[2], dirAxle[1]);
   }
 
-  //rollOfLowerControlArm = 0.0;
+  // rollOfLowerControlArm = 0.0;
   LOG_INFO << "rollOfLowerControlArm[deg]:" << rollOfLowerControlArm * RAD_2_DEG
            << "\n";
 
@@ -174,7 +176,7 @@ void SimDoubleWishBone::constructUCA(btMultiBodyDynamicsWorld *world) {
   } else {
     rollOfUpperControlArm = std::atan2(dirAxle[2], dirAxle[1]);
   }
-  //rollOfUpperControlArm = 0.0;
+  // rollOfUpperControlArm = 0.0;
 
   LOG_INFO << "rollOfUpperControlArm[deg]:" << rollOfUpperControlArm * RAD_2_DEG
            << "\n";
@@ -212,8 +214,8 @@ void SimDoubleWishBone::constructSpringDamperConnector(
   btScalar radius = 0.05;
   m_SpringDamper_LCA_Body.m_mass = mass;
   m_SpringDamper_LCA_Body.m_radius = radius;
-  m_SpringDamper_LCA_Body.m_chassisBodyCollider = btCollisionShapePtr(
-      new btSphereShape(m_SpringDamper_LCA_Body.m_radius));
+  m_SpringDamper_LCA_Body.m_chassisBodyCollider =
+      btCollisionShapePtr(new btSphereShape(m_SpringDamper_LCA_Body.m_radius));
   m_SpringDamper_LCA_Body.m_chassisBodyCollider->calculateLocalInertia(
       m_SpringDamper_LCA_Body.m_mass, m_SpringDamper_LCA_Body.m_inertia);
   m_SpringDamper_LCA_Body.m_thisFrameInParent.setThisTransformInParent(
@@ -229,18 +231,27 @@ void SimDoubleWishBone::constructSpringDamperConnector(
   m_SpringDamper_Chassis_Body.m_thisFrameInParent.setThisTransformInParent(
       sp_localPosInChassisBody, btQuaternion(0, 0, 0, 1));
 
-
   // create rigid body
-  m_SpringDamper_LCA_Body.m_body = btRigidBodyPtr(VehicleUtils::createRigidBodyWithInertia(
-      m_SpringDamper_LCA_Body.m_mass,
-      m_SpringDamper_LCA_Body.m_inertia,
+  m_SpringDamper_LCA_Body
+      .m_body = btRigidBodyPtr(VehicleUtils::createRigidBodyWithInertia(
+      m_SpringDamper_LCA_Body.m_mass, m_SpringDamper_LCA_Body.m_inertia,
       m_SpringDamper_LCA_Body.m_thisFrameInParent.getThisTransformInParent(),
       m_SpringDamper_LCA_Body.m_chassisBodyCollider.get()));
-  m_SpringDamper_Chassis_Body.m_body = btRigidBodyPtr(VehicleUtils::createRigidBodyWithInertia(
-      m_SpringDamper_Chassis_Body.m_mass,
-      m_SpringDamper_Chassis_Body.m_inertia,
-      m_SpringDamper_Chassis_Body.m_thisFrameInParent.getThisTransformInParent(),
-      m_SpringDamper_Chassis_Body.m_chassisBodyCollider.get()));
+  m_SpringDamper_Chassis_Body.m_body =
+      btRigidBodyPtr(VehicleUtils::createRigidBodyWithInertia(
+          m_SpringDamper_Chassis_Body.m_mass,
+          m_SpringDamper_Chassis_Body.m_inertia,
+          m_SpringDamper_Chassis_Body.m_thisFrameInParent
+              .getThisTransformInParent(),
+          m_SpringDamper_Chassis_Body.m_chassisBodyCollider.get()));
+
+  // disable collision
+  m_SpringDamper_LCA_Body.m_body->setCollisionFlags(
+      m_SpringDamper_LCA_Body.m_body->getCollisionFlags() |
+      btCollisionObject::CF_NO_CONTACT_RESPONSE);
+  m_SpringDamper_Chassis_Body.m_body->setCollisionFlags(
+      m_SpringDamper_Chassis_Body.m_body->getCollisionFlags() |
+      btCollisionObject::CF_NO_CONTACT_RESPONSE);
 
   // add rigid body
   world->addRigidBody(m_SpringDamper_LCA_Body.m_body.get(), 0, 0);
@@ -292,8 +303,8 @@ void SimDoubleWishBone::addConstraint(btMultiBodyDynamicsWorld *world) {
   addUCA_AndChassisBody_HingeConstraint(world);
   addLCA_AndChassisBody_HingeConstraint(world);
   add_SpringDamperConnector_HingeConstraint(world);
-  addSpringDamper(world);
-  //addSpringDamper2(world);
+  // addSpringDamper(world);
+  addSpringDamper2(world);
 }
 
 void SimDoubleWishBone::add_SpringDamperConnector_HingeConstraint(
@@ -302,7 +313,7 @@ void SimDoubleWishBone::add_SpringDamperConnector_HingeConstraint(
   auto LCA_Body = m_LCA_Body.m_body;
   auto sp_LCA_Body = m_SpringDamper_LCA_Body.m_body;
 
-  btVector3 hingleAxle{1, 0, 0}; // spindle and upright rotate around y-axis
+  btVector3 hingleAxle{1, 0, 0};  // spindle and upright rotate around y-axis
 
   btVector3 LCA_LocalInAxle =
       m_LCA_Body.m_thisFrameInParent.getThisPositionInParent();
@@ -318,7 +329,8 @@ void SimDoubleWishBone::add_SpringDamperConnector_HingeConstraint(
   constraint->setLimit(-springDamperHingeAngleLimit * DEG_2_RAD,
                        springDamperHingeAngleLimit * DEG_2_RAD);
 
-  m_LCA_Body.m_constraints["LCA_SpringDamper"] = btTypedConstraintPtr(constraint);
+  m_LCA_Body.m_constraints["LCA_SpringDamper"] =
+      btTypedConstraintPtr(constraint);
 
   for (auto i = 0; i <= 5; ++i) {
     constraint->setParam(BT_CONSTRAINT_STOP_ERP, const_ERP, i);
@@ -349,7 +361,7 @@ void SimDoubleWishBone::add_SpringDamperConnector_HingeConstraint(
   constraint = new btHingeConstraint(*sp_chassis_Body.get(),
                                      *chassis_body.get(), btVector3(0, 0, 0),
                                      pivotInChassis, hingleAxle, hingleAxle);
-  
+
   constraint->setLimit(-springDamperHingeAngleLimit * DEG_2_RAD,
                        springDamperHingeAngleLimit * DEG_2_RAD);
 
@@ -360,8 +372,9 @@ void SimDoubleWishBone::add_SpringDamperConnector_HingeConstraint(
     constraint->setParam(BT_CONSTRAINT_CFM, const_CFM, i);
   }
 
-  std::string constraintName = "Chassis_SpringDamper" + std::to_string((int)m_axleNum) +
-                               "_" + std::to_string((int)m_side);
+  std::string constraintName = "Chassis_SpringDamper" +
+                               std::to_string((int)m_axleNum) + "_" +
+                               std::to_string((int)m_side);
   m_LCA_Body.m_constraints[constraintName] = btTypedConstraintPtr(constraint);
 
   world->addConstraint(constraint);
@@ -370,7 +383,7 @@ void SimDoubleWishBone::add_SpringDamperConnector_HingeConstraint(
 void SimDoubleWishBone::addSpringDamper(btMultiBodyDynamicsWorld *world) {
   // get axle and chassis simbody
   auto axleSimBody =
-      m_parent->getSimBody(); // SimAxle has no rigid body for now !!!
+      m_parent->getSimBody();  // SimAxle has no rigid body for now !!!
   auto chassisSimBody = m_parent->getParent()->getSimBody();
 
   // get chassis and UCA rigid body
@@ -421,8 +434,8 @@ void SimDoubleWishBone::addSpringDamper(btMultiBodyDynamicsWorld *world) {
   VehicleUtils::printbtVector3(transInChassis.getOrigin(),
                                "spring transInChassis.getOrigin()");
 
-  auto springDamper = new btGeneric6DofSpring2Constraint(*sp_LCA_Body.get(), *sp_chassisBody.get(),
-                                         transInLCA, transInChassis);
+  auto springDamper = new btGeneric6DofSpring2Constraint(
+      *sp_LCA_Body.get(), *sp_chassisBody.get(), transInLCA, transInChassis);
   m_SpringDamper_LCA_Body.m_constraints["Spring_Damper"] =
       btTypedConstraintPtr(springDamper);
 
@@ -461,7 +474,7 @@ void SimDoubleWishBone::addSpringDamper(btMultiBodyDynamicsWorld *world) {
 
   world->addConstraint(springDamper);
 
-#if defined(SIM_DEBUG_DRAW_CONSTRAINT) &&                                      \
+#if defined(SIM_DEBUG_DRAW_CONSTRAINT) && \
     defined(SIM_DEBUG_DRAW_SPRINGDAMPER_CONSTRAINT)
   springDamper->setDbgDrawSize(0.5);
   world->debugDrawConstraint(springDamper);
@@ -479,7 +492,7 @@ void SimDoubleWishBone::addSpringDamper2(btMultiBodyDynamicsWorld *world) {
   btScalar freeLength = m_suspData.spring().freelength().val();
 
   m_springDamper = std::make_shared<SimDistanceSpringConstraint>(
-      LCA_Body.get(), chassisBody.get(), btVector3(0,0,0), btVector3(0, 0, 0),
+      LCA_Body.get(), chassisBody.get(), btVector3(0, 0, 0), btVector3(0, 0, 0),
       0.001);
 
   m_springDamper->setFreeLength(freeLength);
@@ -491,7 +504,7 @@ void SimDoubleWishBone::addUCA_AndChassisBody_HingeConstraint(
     btMultiBodyDynamicsWorld *world) {
   // get axle and chassis simbody
   auto axleSimBody =
-      m_parent->getSimBody(); // SimAxle has no rigid body for now !!!
+      m_parent->getSimBody();  // SimAxle has no rigid body for now !!!
   auto chassisSimBody = m_parent->getParent()->getSimBody();
 
   // get chassis and UCA rigid body
@@ -594,20 +607,20 @@ void SimDoubleWishBone::addUCA_AndChassisBody_HingeConstraint(
   world->addConstraint(hingeFront);
   world->addConstraint(hingeRear);
 
-#if defined(SIM_DEBUG_DRAW_CONSTRAINT) &&                                      \
+#if defined(SIM_DEBUG_DRAW_CONSTRAINT) && \
     defined(SIM_DEBUG_DRAW_UCA_HINGE_CONSTRAINT)
   hingeFront->setDbgDrawSize(0.5);
   hingeRear->setDbgDrawSize(0.5);
   world->debugDrawConstraint(hingeFront);
   world->debugDrawConstraint(hingeRear);
-#endif // SIM_DEBUG_DRAW_CONSTRAINT
+#endif  // SIM_DEBUG_DRAW_CONSTRAINT
 }
 
 void SimDoubleWishBone::addLCA_AndChassisBody_HingeConstraint(
     btMultiBodyDynamicsWorld *world) {
   // get axle and chassis simbody
   auto axleSimBody =
-      m_parent->getSimBody(); // SimAxle has no rigid body for now !!!
+      m_parent->getSimBody();  // SimAxle has no rigid body for now !!!
   auto chassisSimBody = m_parent->getParent()->getSimBody();
 
   // get chassis and UCA rigid body
@@ -715,7 +728,7 @@ void SimDoubleWishBone::addLCA_AndChassisBody_HingeConstraint(
   world->addConstraint(hingeFront);
   world->addConstraint(hingeRear);
 
-#if defined(SIM_DEBUG_DRAW_CONSTRAINT) &&                                      \
+#if defined(SIM_DEBUG_DRAW_CONSTRAINT) && \
     defined(SIM_DEBUG_DRAW_LCA_HINGE_CONSTRAINT)
   hingeFront->setDbgDrawSize(0.5);
   hingeRear->setDbgDrawSize(0.5);
@@ -742,7 +755,8 @@ void SimDoubleWishBone::addUprightAndUCA_Constraint(
   btVector3 pivotInUpright = UCA_ConnectUpright_LocalPos - uprightLocalPos;
   btVector3 pivotInUCA = UCA_ConnectUpright_LocalPos - UCA_LocalPos;
   pivotInUCA = quatRotate(
-      m_UCA_Body.m_thisFrameInParent.getThisRotationInParent().inverse(), pivotInUCA);
+      m_UCA_Body.m_thisFrameInParent.getThisRotationInParent().inverse(),
+      pivotInUCA);
   btVector3 hingeAxle{1, 0, 0};
 
   VehicleUtils::printbtVector3(pivotInUpright,
@@ -769,13 +783,13 @@ void SimDoubleWishBone::addUprightAndUCA_Constraint(
     // set hinge angle limit
     hinge->setLimit(-const_Upright_ControlArm_Angle_Limit,
                     const_Upright_ControlArm_Angle_Limit);
-    //hinge->setMaxMotorImpulse(maxImpulse);
+    // hinge->setMaxMotorImpulse(maxImpulse);
     /*if (m_side == Side::SIDE_LEFT) {
       hinge->setLimit(10 * DEG_2_RAD, 35 * DEG_2_RAD);
     } else {
       hinge->setLimit(-35 * DEG_2_RAD, -10 * DEG_2_RAD);
     }*/
-    
+
     for (auto i = 0; i <= 5; ++i) {
       hinge->setParam(BT_CONSTRAINT_STOP_ERP, const_ERP, i);
       hinge->setParam(BT_CONSTRAINT_ERP, const_ERP, i);
@@ -871,7 +885,7 @@ void SimDoubleWishBone::addSpindleAndUpright_HingeConstraint(
 
   btVector3 pivotInSpindle = midPos - spindleLocalPos;
   btVector3 pivotInUpright = midPos - uprightLocalPos;
-  btVector3 hingleAxle{0, 1, 0}; // spindle and upright rotate around y-axis
+  btVector3 hingleAxle{0, 1, 0};  // spindle and upright rotate around y-axis
 
   VehicleUtils::printbtVector3(pivotInSpindle,
                                "Spindle and Upright, pivotInSpindle");
@@ -935,8 +949,7 @@ void SimDoubleWishBone::initialize(VehicleInitHelper &helper) {
 }
 
 void SimDoubleWishBone::stepSimulation(VehicleStepHelper &helper) {
-  if (m_springDamper.get() != nullptr)
-    m_springDamper->update();
+  if (m_springDamper.get() != nullptr) m_springDamper->update();
   LOG_INFO << SIM_SEPERATOR;
   LOG_INFO << "Axle:" << (int)m_axleNum << ", Side:" << (int)m_side << "\n";
   auto hingeLCA_SP = reinterpret_cast<btHingeConstraint *>(
@@ -952,7 +965,7 @@ void SimDoubleWishBone::stepSimulation(VehicleStepHelper &helper) {
       m_UCA_Body.m_constraints["Upright_UCA"].get());
   LOG_INFO << "hingeUCA_Upright angle[deg]:"
            << hingeUCA_Upright->getHingeAngle() * RAD_2_DEG;
-  
+
   ///*if (m_axleNum == AxleNum::AXLE_1)*/ {
   //  btHingeConstraint *upright_LCA_Hinge =
   //      reinterpret_cast<btHingeConstraint *>(
@@ -961,4 +974,4 @@ void SimDoubleWishBone::stepSimulation(VehicleStepHelper &helper) {
   //           << upright_LCA_Hinge->getHingeAngle() * RAD_2_DEG << ".\n";
   //}
 }
-} // namespace tx_car
+}  // namespace tx_car

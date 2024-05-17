@@ -98,7 +98,7 @@ void ParamWriter_DWDW::writeDoubleWishBone_Front(
 
     arm->mutable_mass()->set_val(5.813);
 
-    arm->mutable_radius()->set_val(0.03); // origin is 0.002
+    arm->mutable_radius()->set_val(0.03);  // origin is 0.002
 
     arm->mutable_offset()->set_x(0);
     arm->mutable_offset()->set_y(0.589 * flip);
@@ -154,14 +154,14 @@ void ParamWriter_DWDW::writeDoubleWishBone_Front(
   {
     auto spring = dw.mutable_spring();
 
-    spring->mutable_stiffness()->set_val(45000 * 100);
+    spring->mutable_stiffness()->set_val(45 * 1000);
     spring->mutable_freelength()->set_val(0.3);
 
-    spring->mutable_offsetinchassis()->set_x(0); // 0.104
+    spring->mutable_offsetinchassis()->set_x(0);  // 0.104
     spring->mutable_offsetinchassis()->set_y(0.6 * flip);
     spring->mutable_offsetinchassis()->set_z(UCA_Z_ConnectorChassis + 0.1);
 
-    spring->mutable_offsetinaxle()->set_x(0); // 0.097
+    spring->mutable_offsetinaxle()->set_x(0);  // 0.097
     spring->mutable_offsetinaxle()->set_y(0.9 * flip);
     spring->mutable_offsetinaxle()->set_z(-0.047);
   }
@@ -227,7 +227,7 @@ void ParamWriter_DWDW::writeDoubleWishBone_Rear(
 
     arm->mutable_mass()->set_val(5.45);
 
-    arm->mutable_radius()->set_val(0.03); // origin is 0.002
+    arm->mutable_radius()->set_val(0.03);  // origin is 0.002
 
     arm->mutable_offset()->set_x(0.0);
     arm->mutable_offset()->set_y(0.589 * flip);
@@ -283,14 +283,14 @@ void ParamWriter_DWDW::writeDoubleWishBone_Rear(
   {
     auto spring = dw.mutable_spring();
 
-    spring->mutable_stiffness()->set_val(50000 * 100);
+    spring->mutable_stiffness()->set_val(50 * 1000);
     spring->mutable_freelength()->set_val(0.3);
 
-    spring->mutable_offsetinchassis()->set_x(0); //-0.104
+    spring->mutable_offsetinchassis()->set_x(0);  //-0.104
     spring->mutable_offsetinchassis()->set_y(0.6 * flip);
     spring->mutable_offsetinchassis()->set_z(UCA_Z_ConnectorChassis + 0.1);
 
-    spring->mutable_offsetinaxle()->set_x(0); //-0.097
+    spring->mutable_offsetinaxle()->set_x(0);  //-0.097
     spring->mutable_offsetinaxle()->set_y(0.9 * flip);
     spring->mutable_offsetinaxle()->set_z(-0.047);
   }
@@ -376,4 +376,4 @@ void ParamWriter_DWDW::writeChassisBody(tx_car::MBD_Vehicle_DW_DW &vehicle) {
   bbx->set_y(0.3);
   bbx->set_z(0.2);
 }
-} // namespace tx_car
+}  // namespace tx_car
